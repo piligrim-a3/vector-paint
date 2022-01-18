@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
-import java.util.Random;
+import java.awt.*;
 
 public class Main {
 
@@ -15,8 +15,12 @@ public class Main {
         logger.info("Start program");
         JFrame frame = new JFrame("Vector Pain 0.1 alpha");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        PaintPanel paintPanel = new PaintPanel();
-        frame.setContentPane(paintPanel);
+        PropertiesPanel propertiesPanel = new PropertiesPanel();
+        PaintPanel paintPanel = new PaintPanel(propertiesPanel);
+        JPanel center = new JPanel(new BorderLayout());
+        center.add(paintPanel, BorderLayout.CENTER);
+        center.add(propertiesPanel,BorderLayout.EAST);
+        frame.setContentPane(center);
         frame.pack();
         frame.setVisible(true);
     }

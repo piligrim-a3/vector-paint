@@ -16,7 +16,10 @@ public class PaintPanel extends JComponent implements MouseMotionListener, Mouse
     private int currentX = 0;
     private int currentY = 0;
 
-    PaintPanel() {
+    private PropertiesPanel propertiesPanel;
+
+    PaintPanel(PropertiesPanel propertiesPanel) {
+        this.propertiesPanel = propertiesPanel;
         setPreferredSize(new Dimension(600, 400));
         figureList.add(new SquareFigure());
         figureList.add(new SquareFigure());
@@ -53,16 +56,13 @@ public class PaintPanel extends JComponent implements MouseMotionListener, Mouse
     }
 
     @Override
-    public void mouseClicked(MouseEvent mouseEvent) {}
+    public void mouseClicked(MouseEvent mouseEvent) {
+        selectCurrentFigure(mouseEvent);
+    }
 
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
-        for (Figure figure: figureList) {
-            if(figure.contains(mouseEvent.getX(), mouseEvent.getY())) {
-                currentFigure = figure;
-                break;
-            }
-        }
+        selectCurrentFigure(mouseEvent);
     }
 
     @Override
@@ -75,4 +75,16 @@ public class PaintPanel extends JComponent implements MouseMotionListener, Mouse
 
     @Override
     public void mouseExited(MouseEvent mouseEvent) {}
+
+    private void selectCurrentFigure(MouseEvent mouseEvent) {
+        for (Figure figure: figureList) {
+            if(figure.contains(mouseEvent.getX(), mouseEvent.getY())) {
+                if(currentFigure != figure) {
+                    currentFigure = figure;
+                    propertiesPanel.setFigure(figure);
+                }
+                break;
+            }
+        }
+    }
 }
