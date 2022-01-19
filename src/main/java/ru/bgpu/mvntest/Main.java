@@ -15,7 +15,7 @@ public class Main {
         logger.info("Start program");
         JFrame frame = new JFrame("Vector Pain 0.1 alpha");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        PropertiesPanel propertiesPanel = new PropertiesPanel();
+        PropertiesPanel propertiesPanel = new PropertiesPanel(frame);
         PaintPanel paintPanel = new PaintPanel(propertiesPanel);
         JPanel center = new JPanel(new BorderLayout());
         center.add(paintPanel, BorderLayout.CENTER);
