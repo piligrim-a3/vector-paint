@@ -18,6 +18,7 @@ public class PropertiesPanel extends JPanel {
 
     private JPanel configPanel = new JPanel();
     private JButton okButton = new JButton("OK");
+    private Figure figure;
 
     private ArrayList<PropertyContainer> containers = new ArrayList<>();
 
@@ -45,6 +46,11 @@ public class PropertiesPanel extends JPanel {
                 figure.getClass().getDeclaredFields().length+1,2
         ));
         configPanel.removeAll();
+        if(this.figure != null) {
+            containers.forEach(
+                    container -> this.figure.removeFigureEditListener(container)
+            );
+        }
         containers.clear();
         for(Field field: figure.getClass().getDeclaredFields()) {
             String fieldName = field.getName();
@@ -57,9 +63,11 @@ public class PropertiesPanel extends JPanel {
                 if (field.getType().equals(int.class)) {
                     JTextField input = new JTextField();
                     input.setText(value.toString());
-                    containers.add(new IntPropertyContainer(
+                    PropertyContainer container = new IntPropertyContainer(
                             input, field, figure
-                    ));
+                    );
+                    figure.addFigureEditListener(container);
+                    containers.add(container);
                     configPanel.add(input);
                 } else {
                     configPanel.add(new JLabel(value.toString()));
@@ -68,6 +76,7 @@ public class PropertiesPanel extends JPanel {
                 configPanel.add(new JLabel("error..."));
             }
         }
+        this.figure = figure;
         configPanel.add(new JLabel(""));
         configPanel.add(okButton);
         frame.pack();

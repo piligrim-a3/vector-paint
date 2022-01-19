@@ -24,4 +24,20 @@ public class IntPropertyContainer implements PropertyContainer {
                 int.class
         ).invoke(figure, Integer.parseInt(input.getText()));
     }
+
+    @Override
+    public void edit(Field field) {
+        if(field.equals(this.field)) {
+            try {
+                input.setText(
+                        figure.getClass().getMethod(
+                                "get" + field.getName().substring(0, 1).toUpperCase()
+                                        + field.getName().substring(1)
+                        ).invoke(figure).toString()
+                );
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

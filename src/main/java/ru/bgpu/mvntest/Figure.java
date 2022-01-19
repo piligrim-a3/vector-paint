@@ -1,10 +1,21 @@
 package ru.bgpu.mvntest;
 
 import java.awt.*;
+import java.util.ArrayList;
 
-public interface Figure {
+public abstract class Figure {
 
-    void paint(Graphics graphics);
-    void move(int dx,int dy);
-    boolean contains(int x, int y);
+    ArrayList<FigureEditListener> figureEditListeners = new ArrayList<>();
+
+    abstract void paint(Graphics graphics);
+    abstract void move(int dx,int dy);
+    abstract boolean contains(int x, int y);
+
+    void addFigureEditListener(FigureEditListener listener) {
+        figureEditListeners.add(listener);
+    }
+
+    void removeFigureEditListener(FigureEditListener listener) {
+        figureEditListeners.remove(listener);
+    }
 }

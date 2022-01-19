@@ -2,7 +2,7 @@ package ru.bgpu.mvntest;
 
 import java.awt.*;
 
-public class SquareFigure implements Figure{
+public class SquareFigure extends Figure {
 
     private Color color = Color.BLUE;
     private int x = 0,y = 0;
@@ -19,6 +19,14 @@ public class SquareFigure implements Figure{
     public void move(int dx, int dy) {
         x += dx;
         y += dy;
+        figureEditListeners.forEach(listener -> {
+            try {
+                listener.edit(getClass().getDeclaredField("x"));
+                listener.edit(getClass().getDeclaredField("y"));
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     @Override
