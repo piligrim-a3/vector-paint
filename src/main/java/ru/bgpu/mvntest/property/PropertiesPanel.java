@@ -22,7 +22,7 @@ public class PropertiesPanel extends JPanel {
 
     private ArrayList<PropertyContainer> containers = new ArrayList<>();
 
-    PropertiesPanel(JFrame frame) {
+    public PropertiesPanel(JFrame frame) {
         this.frame = frame;
         setPreferredSize(new Dimension(200, 100));
         setLayout(new BorderLayout());
@@ -69,6 +69,14 @@ public class PropertiesPanel extends JPanel {
                     figure.addFigureEditListener(container);
                     containers.add(container);
                     configPanel.add(input);
+                } else if(value instanceof Color && field.getType().equals(Color.class)){
+                    JColorChooser input = new JColorChooser();
+                    input.setColor((Color) value);
+                    containers.add(new ColorPropertyContainer(
+                            input, field, figure
+                    ));
+                    // TODO: 19.01.2022 add color Button 
+                    configPanel.add(new JLabel("..."));
                 } else {
                     configPanel.add(new JLabel(value.toString()));
                 }

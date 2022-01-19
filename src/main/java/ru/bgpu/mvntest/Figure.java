@@ -13,11 +13,11 @@ public abstract class Figure {
     abstract void move(int dx,int dy);
     abstract boolean contains(int x, int y);
 
-    void addFigureEditListener(FigureEditListener listener) {
+    public void addFigureEditListener(FigureEditListener listener) {
         figureEditListeners.add(listener);
     }
 
-    void removeFigureEditListener(FigureEditListener listener) {
+    public void removeFigureEditListener(FigureEditListener listener) {
         figureEditListeners.remove(listener);
     }
 }
