@@ -1,5 +1,7 @@
 package ru.bgpu.mvntest;
 
+import ru.bgpu.mvntest.property.FigureEditListener;
+
 import java.awt.*;
 import java.util.ArrayList;
 

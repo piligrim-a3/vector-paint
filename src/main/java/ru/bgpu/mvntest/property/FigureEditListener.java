@@ -1,4 +1,4 @@
-package ru.bgpu.mvntest;
+package ru.bgpu.mvntest.property;
 
 import java.lang.reflect.Field;
 

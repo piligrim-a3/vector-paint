@@ -1,4 +1,6 @@
-package ru.bgpu.mvntest;
+package ru.bgpu.mvntest.property;
+
+import ru.bgpu.mvntest.Figure;
 
 import javax.swing.*;
 import java.lang.reflect.Field;

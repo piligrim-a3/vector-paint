@@ -1,12 +1,12 @@
-package ru.bgpu.mvntest;
+package ru.bgpu.mvntest.property;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.bgpu.mvntest.Figure;
 
 import javax.swing.*;
 import java.awt.*;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 public class PropertiesPanel extends JPanel {

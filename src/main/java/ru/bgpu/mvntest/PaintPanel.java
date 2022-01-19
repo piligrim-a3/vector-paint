@@ -1,5 +1,7 @@
 package ru.bgpu.mvntest;
 
+import ru.bgpu.mvntest.property.PropertiesPanel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
