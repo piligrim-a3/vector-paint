@@ -1,5 +1,11 @@
 package ru.bgpu.mvntest;
 
+/**
+* @author  Grebenyuk Alexey
+* @version 1.0
+* @since   2022-01-21 
+*/
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.bgpu.mvntest.property.PropertiesPanel;
