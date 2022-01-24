@@ -1,3 +1,9 @@
+/**
+* @author  Pyura Polina
+* @version 1.0
+* @since   2022-01-21 
+*/
+
 package ru.bgpu.mvntest;
 
 import org.slf4j.Logger;
